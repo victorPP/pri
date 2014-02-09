@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %} Inicio {% endblock %}
+	{% block menu %}
+		<li><a href="/">Inicio</a></li>
+		<li><a href="/captura">Captura</a></li>
+	{% endblock %}
+
+	{% block contenido %}
+		<h1>Titulo</h1>
+		<img src="/media/img/logo_pri.png">
+		<article>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+			<p>Nullam eget nisi vehicula, convallis erat non, rutrum diam. Donec suscipit</p>
+			<p>velit quis laoreet lacinia, ante lacus ornare velit, in porta est felis ac felis.</p>
+			<p><a href="/">Link</a></p>
+		</article>
+	{% endblock %}

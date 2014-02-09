@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block  title %} Captura / Municipio {% endblock %}
+
+{% block menu %} 
+	<li><a href="/logout/">Cerrar Sesion</a></li>
+	<li><a href="/captura/">Seleccionar municipio</a></li>
+{% endblock %}
+
+{% block contenido %}
+		{% if municipio and ruta %}
+			<form name="esc_municipio" action="/captura/municipio/" method="post">
+						{% csrf_token %}
+				{% for m in municipio %}
+						Municipio:<input type="text" name="municipio" value="{{ m.id }}" style="display: none;">{{ m.nombre }}
+				{% endfor %}
+
+				{% for r in ruta %}
+						<input type="radio" name="ruta" value="{{ r.id }}">{{ m.numero }}
+				{% endfor %}
+						<input type="submit" id="escojer" value="Escojer Ruta">
+			</form>
+
+				<br>
+				<h2>Captura Enlace Electoral</h2>
+			<form name="esc_municipio" action="/captura/municipio/enlace" method="post">
+						{% csrf_token %}
+				{% for m in municipio %}
+						<input type="text" name="municipio" value="{{ m.id }}" display="none">{{ m.nombre }}
+						<br>
+				{% endfor %}
+						<input type="submit" id="escojer" value="Escojer">
+			</form>
+			
+		{% else %}
+
+				<h1>No hay municipios para Seleccionar :( </h1>
+
+		{% endif %}
+{% endblock %}

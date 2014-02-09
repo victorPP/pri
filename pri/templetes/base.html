@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>{% block title %}  {% endblock %}</title>
+		<script type="text/javascript" src="/media/js/jquery.min.js"></script>
+		<link href='http://fonts.googleapis.com/css?family=Montserrat+Alternates' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="/media/css/base.css">
+		{% block script %}  {% endblock %} 
+	</head>
+
+	<body>
+		{% if user.is_authenticated %}
+			<header>
+				<nav>
+					<ul>
+						{% block menu %} {% endblock %}
+					</ul>
+				</nav>
+			</header>
+
+			<section class="contenedor">
+				{% block contenido %}
+
+				{% endblock %}
+			</section>
+			
+		{% else %}
+			<section class="contenedor">
+				<h1>Acceso Denegado !!!</h1>
+				<h2>Inicia Sesion Entrando <a href="/login/">Aqui</a></h2>
+			</section>
+			
+
+		{% endif %}
+
+	</body>
+
+</html>

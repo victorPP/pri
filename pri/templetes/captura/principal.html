@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block  title %} Captura {% endblock %}
+
+{% block menu %} 
+	<li><a href="/logout/">Cerrar Sesion</a></li>
+{% endblock %}
+
+{% block contenido %}
+		{% if municipio %}
+			<form name="esc_municipio" action="/captura/municipio/" method="post">
+						{% csrf_token %}
+				{% for m in municipio %}
+						<input type="radio" name="municipio" value="{{ m.id }}" >{{ m.nombre }}
+						<br>
+				{% endfor %}
+						<input type="submit" id="escojer" value="Escojer">
+			</form>
+		{% else %}
+
+				<h1>No hay municipios para Seleccionar :( </h1>
+
+		{% endif %}
+{% endblock %}
